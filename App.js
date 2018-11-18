@@ -5,10 +5,11 @@
  * @format
  * @flow
  */
-
+//Balqis create folder- 18/11
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-import btnAnalyzer from './btnAnalayzer';
+import {Platform, TouchableOpacity, StyleSheet, Text, View, TextInput} from 'react-native';
+import {Analyzer, styles} from './Analayzer';
+
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -19,7 +20,7 @@ const instructions = Platform.select({
 
 //type Props = {};
 export default class App extends Component{
-
+ 
   constructor(){
     super();
     this.state = {
@@ -32,9 +33,9 @@ export default class App extends Component{
   }
 
   updateWord(){
-    this.setState({char: String.split().length}, ()=>
-    {
-
+    this.setState({char: this.state.word.split(1)}, ()=>
+    { 
+     
 
     })
   }  
@@ -42,9 +43,16 @@ export default class App extends Component{
   render() {
     return (
       <View style={styles.container}>
-        <TextInput placeholder = 'Word:' onChangeText = {(word) => this.setState({word})}/>
-        <btnAnalyzer onPress = {() => this.updateWord()}/>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <Text>Word:</Text>
+        <TextInput placeholder = 'text here' onChangeText = {(word) => this.setState({word})}/>
+        <TouchableOpacity style = {styles.design} onPress = {() => this.updateWord()}><Text>Analyzer</Text></TouchableOpacity>
+
+        <Text>Word: {this.state.word}</Text>
+      
+        
+        <Text>No Of Characters: {this.state.char.length}</Text>
+        
+       
       </View>
     );
   }
