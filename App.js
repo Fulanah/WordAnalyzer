@@ -5,7 +5,7 @@
  * @format
  * @flow
  */
-//Balqis create folder- 18/11
+//Balqis create - 18/11
 import React, {Component} from 'react';
 import {Platform, TouchableOpacity, StyleSheet, Text, View, TextInput} from 'react-native';
 import {Analyzer, styles} from './Analayzer';
