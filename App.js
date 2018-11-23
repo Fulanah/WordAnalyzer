@@ -33,29 +33,29 @@ export default class App extends Component{
   }
   
   updateWord(){
-    this.setState({char: this.state.word.split("")}, ()=>
-    {
-      for(let i = 0; i <= this.state.char.length; i++){
-        this.setState({vow: (this.state.vow + 1)});
-        /*
-        if(this.state.char.match(/a/gi)){
-          
-          this.setState({vow: (this.state.vow + 1)});
-          
-        }
-        else{
-          this.setState({con: (this.state.con + 1)});
-        }
-        //this.setState({con: (this.state.con + 1)});
-        */
-      }
-      //this.setState({con: (this.state.con + 1)});
-      //this.charCounter();
-    })
-  }  
 
+  //  var vowels = ["a", "e", "i", "o", "u"];
+    let counter = 0;
+    let counterCon = 0;
+    var i;
+    var isVowel = false;
+
+    this.setState({char: this.state.word.split("")});
+    
+      for (i = 0; i < this.state.word.length; i++){
+       if(this.state.word[i].match(/[aeiou]/gi, '')){
+         counter++;
+         this.setState({vow: counter});
+       }else if(!(this.state.word[i].match(/[aeiou]/gi, ''))){
+         counterCon++;
+         this.setState({con: counterCon});
+
+       }
+      }
   
-  render() {
+    }
+
+render(){
     return (
       <View style={styles.container}>
         <Text>Word:</Text>
@@ -68,9 +68,8 @@ export default class App extends Component{
         <Text>No Of Characters: {this.state.char.length}</Text>
         <Text>No Of Vowel: {this.state.vow}</Text>
         <Text>No Of Consonant: {this.state.con}</Text>
-       
       </View>
     );
   }
-}
+    }
 
