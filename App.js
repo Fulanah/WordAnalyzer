@@ -20,7 +20,7 @@ const instructions = Platform.select({
 
 //type Props = {};
 export default class App extends Component{
-  
+  //created by balqis, latest updated by tirmizi
   constructor(){
     super();
     this.state = {
@@ -34,37 +34,30 @@ export default class App extends Component{
   
   updateWord(){
 
-  //  var vowels = ["a", "e", "i", "o", "u"];
     let counter = 0;
     let counterCon = 0;
     var i;
-    var isVowel = false;
 
-    this.setState({char: this.state.word.split("")});
-    
-      for (i = 0; i < this.state.word.length; i++){
-       if(this.state.word[i].match(/[aeiou]/gi, '')){
+    this.setState({char: this.state.word.split("")}); //tirmizi
+     //balqis
+      for (i = 0; i < this.state.word.length; i++){  
+       if(this.state.word[i].match(/[aeiou]/gi, '')){ 
          counter++;
          this.setState({vow: counter});
        }else if(!(this.state.word[i].match(/[aeiou]/gi, ''))){
          counterCon++;
          this.setState({con: counterCon});
-
        }
       }
-  
     }
 
 render(){
     return (
       <View style={styles.container}>
         <Text>Word:</Text>
-        <TextInput placeholder = 'text here' onChangeText = {(word) => this.setState({word})}/>
+        <TextInput placeholder = 'text here' onChangeText = {(word) => this.setState({word})}/> 
         <TouchableOpacity style = {styles.design} onPress = {() => this.updateWord()}><Text>Analyzer</Text></TouchableOpacity>
-
         <Text>Word: {this.state.word}</Text>
-      
-        
         <Text>No Of Characters: {this.state.char.length}</Text>
         <Text>No Of Vowel: {this.state.vow}</Text>
         <Text>No Of Consonant: {this.state.con}</Text>
